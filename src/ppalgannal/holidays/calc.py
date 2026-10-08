@@ -26,10 +26,12 @@ def _build_holidays(
     dict[date, Holiday],
     dict[date, SubstituteRule],
     list[tuple[date, ...]],
+    set[date],
 ]:
     holidays: dict[date, Holiday] = {}
     rules: dict[date, SubstituteRule] = {}
     three_day_groups: list[tuple[date, ...]] = []
+    overlapping_dates: set[date] = set()
 
     for definition in SOLAR_HOLIDAYS:
         holiday_date = date(year, definition.month, definition.day)
@@ -46,6 +48,7 @@ def _build_holidays(
                 definition.name,
                 f"{definition.name} 다음날",
             )
+            overlapping_dates.update(day for day in dates if day in holidays)
         else:
             dates = (center,)
             names = (definition.name,)
@@ -62,13 +65,13 @@ def _build_holidays(
         )
         rules[holiday_date] = definition.substitute
 
-    return holidays, rules, three_day_groups
+    return holidays, rules, three_day_groups, overlapping_dates
 
 
 @lru_cache(maxsize=16)
 def _get_holidays(year: int) -> tuple[Holiday, ...]:
-    holidays, rules, three_day_groups = _build_holidays(year)
-    add_substitute_holidays(holidays, rules, three_day_groups)
+    holidays, rules, three_day_groups, overlapping_dates = _build_holidays(year)
+    add_substitute_holidays(holidays, rules, three_day_groups, overlapping_dates)
 
     return tuple(
         sorted(

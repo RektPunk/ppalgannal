@@ -28,11 +28,15 @@ def add_substitute_holidays(
     holidays: dict[date, Holiday],
     rules: dict[date, SubstituteRule],
     three_day_groups: list[tuple[date, ...]],
+    overlapping_dates: set[date],
 ) -> None:
     holiday_dates = set(holidays)
 
     for group in three_day_groups:
-        if not any(day.weekday() == 6 for day in group):
+        overlaps_sunday = any(day.weekday() == 6 for day in group)
+        overlaps_holiday = any(day in overlapping_dates for day in group)
+
+        if not (overlaps_sunday or overlaps_holiday):
             continue
 
         substitute_date = _next_non_holiday(group[-1], holiday_dates)
@@ -41,6 +45,7 @@ def add_substitute_holidays(
             name=f"{holidays[group[1]].name} 대체공휴일",
             is_substitute=True,
         )
+        holiday_dates.add(substitute_date)
 
     for holiday_date, rule in rules.items():
         if any(holiday_date in group for group in three_day_groups):
@@ -55,3 +60,4 @@ def add_substitute_holidays(
             name=f"{holidays[holiday_date].name} 대체공휴일",
             is_substitute=True,
         )
+        holiday_dates.add(substitute_date)

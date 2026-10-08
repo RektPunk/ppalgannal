@@ -20,7 +20,7 @@ from datetime import date
 from ppalgannal import get_holidays, is_holiday, is_today_holiday
 
 # 1. Get all holidays for a year
-for holiday in get_holidays(2026):
+for holiday in get_holidays(2027):
     print(
         holiday.date,
         holiday.name,
@@ -31,7 +31,7 @@ for holiday in get_holidays(2026):
 print(is_holiday("2027-01-01"))  # True (New Year's Day)
 print(is_holiday("2027-02-09"))  # True (Seollal Substitute Holiday)
 print(is_holiday(date(2027, 5, 5)))  # True (Children's Day)
-print(is_holiday("2027-05-03"))  # True (Labor Day)
+print(is_holiday(date(2027, 5, 3)))  # True (Labor Day Substitute Holiday)
 
 # 3. Check if today is a holiday in Korea (KST)
 if is_today_holiday():

@@ -53,6 +53,9 @@ LUNAR_HOLIDAYS = (
 
 SPECIAL_HOLIDAYS: dict[int, tuple[SolarHoliday, ...]] = {
     2024: (SolarHoliday(4, 10, "제22대 국회의원 선거일"),),
-    2025: (SolarHoliday(6, 3, "대통령 선거일"),),
+    2025: (SolarHoliday(6, 3, "제21대 대통령 선거일"),),
     2026: (SolarHoliday(6, 3, "제9회 전국동시지방선거"),),
+    2028: (SolarHoliday(4, 12, "제23대 국회의원 선거일"),),
+    2030: (SolarHoliday(3, 27, "제22대 대통령 선거일"),),
+    2035: (SolarHoliday(3, 28, "제23대 대통령 선거일"),),
 }

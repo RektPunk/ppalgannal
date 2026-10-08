@@ -8,7 +8,7 @@ from ppalgannal.holidays import (
     is_holiday,
     is_holiday_today,
 )
-from ppalgannal.holidays.constant import KST, SPECIAL_HOLIDAYS, Holiday
+from ppalgannal.holidays.constant import KST, Holiday
 
 
 class TestSolarHolidays:
@@ -62,13 +62,23 @@ class TestSpecialHolidays:
 
         holidays_2025 = {h.date: h.name for h in get_holidays(2025)}
         assert date(2025, 6, 3) in holidays_2025
-        assert holidays_2025[date(2025, 6, 3)] == "대통령 선거일"
+        assert holidays_2025[date(2025, 6, 3)] == "제21대 대통령 선거일"
 
         holidays_2026 = {h.date: h.name for h in get_holidays(2026)}
         assert date(2026, 6, 3) in holidays_2026
         assert holidays_2026[date(2026, 6, 3)] == "제9회 전국동시지방선거"
 
-        assert 2027 not in SPECIAL_HOLIDAYS
+        holidays_2028 = {h.date: h.name for h in get_holidays(2028)}
+        assert date(2028, 4, 12) in holidays_2028
+        assert holidays_2028[date(2028, 4, 12)] == "제23대 국회의원 선거일"
+
+        holidays_2030 = {h.date: h.name for h in get_holidays(2030)}
+        assert date(2030, 3, 27) in holidays_2030
+        assert holidays_2030[date(2030, 3, 27)] == "제22대 대통령 선거일"
+
+        holidays_2035 = {h.date: h.name for h in get_holidays(2035)}
+        assert date(2035, 3, 28) in holidays_2035
+        assert holidays_2035[date(2035, 3, 28)] == "제23대 대통령 선거일"
 
 
 class TestSubstituteHolidays:
@@ -116,6 +126,14 @@ class TestSubstituteHolidays:
         holidays = {h.date: h for h in get_holidays(2027)}
         assert date(2027, 6, 6) in holidays
         assert date(2027, 6, 7) not in holidays
+
+    def test_lunar_three_day_overlapped(self):
+        holidays = {h.date: h for h in get_holidays(2028)}
+        sub_date = date(2028, 10, 5)
+
+        assert sub_date in holidays
+        assert holidays[sub_date].name == "개천절 대체공휴일"
+        assert holidays[sub_date].is_substitute is True
 
 
 class TestGetHolidays:

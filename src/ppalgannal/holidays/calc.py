@@ -33,18 +33,13 @@ def _build_holidays(
 
     for definition in SOLAR_HOLIDAYS:
         holiday_date = date(year, definition.month, definition.day)
-        _add_holiday(holidays, Holiday(holiday_date, definition.name))
+        _add_holiday(holidays, Holiday(date=holiday_date, name=definition.name))
         rules[holiday_date] = definition.substitute
 
     for definition in LUNAR_HOLIDAYS:
         center = lunar_to_solar(year, definition.month, definition.day)
-
         if definition.three_day:
-            dates = (
-                center - timedelta(days=1),
-                center,
-                center + timedelta(days=1),
-            )
+            dates = (center - timedelta(days=1), center, center + timedelta(days=1))
             three_day_groups.append(dates)
             names = (
                 f"{definition.name} 전날",
@@ -56,14 +51,14 @@ def _build_holidays(
             names = (definition.name,)
 
         for holiday_date, name in zip(dates, names, strict=True):
-            _add_holiday(holidays, Holiday(holiday_date, name))
+            _add_holiday(holidays, Holiday(date=holiday_date, name=name))
             rules[holiday_date] = definition.substitute
 
     for definition in SPECIAL_HOLIDAYS.get(year, ()):
         holiday_date = date(year, definition.month, definition.day)
         _add_holiday(
             holidays,
-            Holiday(holiday_date, definition.name, is_substitute=False),
+            Holiday(date=holiday_date, name=definition.name, is_substitute=False),
         )
         rules[holiday_date] = definition.substitute
 

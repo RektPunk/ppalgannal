@@ -33,10 +33,10 @@ class TestLunarToSolar:
 
         with pytest.raises(TypeError, match="must be integers"):
             # bool is subclass of int in Python, should be rejected
-            lunar_to_solar(True, 1, 1)  # type: ignore
+            lunar_to_solar(True, 1, 1)
 
         with pytest.raises(TypeError, match="must be integers"):
-            lunar_to_solar(2027, False, 1)  # type: ignore
+            lunar_to_solar(2027, False, 1)
 
     def test_year_out_of_range(self):
         with pytest.raises(ValueError, match="lunar year must be between"):

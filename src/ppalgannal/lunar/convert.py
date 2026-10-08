@@ -1,6 +1,6 @@
 from datetime import date
 
-from ppalgannal.luna.constant import (
+from ppalgannal.lunar.constant import (
     LUNAR_BIG_MONTH_DAYS,
     LUNAR_DATA,
     LUNAR_MAX_YEAR,

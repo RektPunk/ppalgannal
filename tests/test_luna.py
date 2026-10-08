@@ -2,8 +2,8 @@ from datetime import date
 
 import pytest
 
-from ppalgannal.luna import lunar_to_solar
-from ppalgannal.luna.constant import LUNAR_MAX_YEAR, LUNAR_MIN_YEAR
+from ppalgannal.lunar import lunar_to_solar
+from ppalgannal.lunar.constant import LUNAR_MAX_YEAR, LUNAR_MIN_YEAR
 
 
 class TestLunarToSolar:

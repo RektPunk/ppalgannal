@@ -1,3 +1,10 @@
+# lunar/constant.py
+
+# Based on conversion data from korean_lunar_calendar,
+# Copyright (c) 2018 usingsky.
+# Licensed under the MIT License.
+# https://github.com/usingsky/korean_lunar_calendar_py
+
 LUNAR_MIN_YEAR = 1000
 LUNAR_MAX_YEAR = 2050
 LUNAR_SMALL_MONTH_DAYS = 29

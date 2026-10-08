@@ -6,7 +6,7 @@ import pytest
 from ppalgannal.holidays import (
     get_holidays,
     is_holiday,
-    is_today_holiday,
+    is_holiday_today,
 )
 from ppalgannal.holidays.constant import KST, SPECIAL_HOLIDAYS, Holiday
 
@@ -175,11 +175,11 @@ class TestIsTodayHoliday:
         mock_now = datetime(2027, 1, 1, 10, 0, 0, tzinfo=KST)
         mock_datetime.now.return_value = mock_now
 
-        assert is_today_holiday() is True
+        assert is_holiday_today() is True
 
     @patch("ppalgannal.holidays.calc.datetime")
     def test_today_is_not_holiday(self, mock_datetime):
         mock_now = datetime(2027, 1, 4, 10, 0, 0, tzinfo=KST)
         mock_datetime.now.return_value = mock_now
 
-        assert is_today_holiday() is False
+        assert is_holiday_today() is False

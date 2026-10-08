@@ -1,3 +1,10 @@
+# lunar/convert.py
+
+# Based on conversion algorithms from korean_lunar_calendar,
+# Copyright (c) 2018 usingsky.
+# Licensed under the MIT License.
+# https://github.com/usingsky/korean_lunar_calendar_py
+
 from datetime import date
 
 from ppalgannal.lunar.constant import (

@@ -1,7 +1,3 @@
-# Conversion data and algorithm are derived from korean_lunar_calendar,
-# Copyright (c) 2018 usingsky, MIT License.
-# https://github.com/usingsky/korean_lunar_calendar_py
-
 from ppalgannal.lunar.constant import LUNAR_MAX_YEAR, LUNAR_MIN_YEAR
 from ppalgannal.lunar.convert import lunar_to_solar
 

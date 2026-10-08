@@ -1,12 +1,12 @@
 [project]
 name = "ppalgannal"
 version = "0.1.0"
-description = "Add your description here"
+description = "Korean holidays, aka the red days."
 readme = "README.md"
 authors = [
     { email = "rektpunk@gmail.com" }
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = []
 
 [build-system]

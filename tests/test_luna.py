@@ -3,7 +3,11 @@ from datetime import date
 import pytest
 
 from ppalgannal.lunar import lunar_to_solar
-from ppalgannal.lunar.constant import LUNAR_MAX_YEAR, LUNAR_MIN_YEAR
+from ppalgannal.lunar.constant import LUNAR_DATA, LUNAR_MAX_YEAR, LUNAR_MIN_YEAR
+
+
+def test_lunar_data_covers_supported_years():
+    assert len(LUNAR_DATA) == LUNAR_MAX_YEAR - LUNAR_MIN_YEAR + 1
 
 
 class TestLunarToSolar:

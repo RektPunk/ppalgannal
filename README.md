@@ -6,7 +6,7 @@ Korean holidays, aka the red days. A lightweight, zero-dependency Python library
 
 ## Installation
 
-Requires Python 3.10+.
+Requires Python 3.11+.
 
 ```bash
 pip install ppalgannal
@@ -17,7 +17,7 @@ pip install ppalgannal
 ```python
 from datetime import date
 
-from ppalgannal import get_holidays, is_holiday, is_today_holiday
+from ppalgannal import get_holidays, is_holiday, is_holiday_today
 
 # 1. Get all holidays for a year
 for holiday in get_holidays(2027):
@@ -34,6 +34,6 @@ print(is_holiday(date(2027, 5, 5)))  # True (Children's Day)
 print(is_holiday(date(2027, 5, 3)))  # True (Labor Day Substitute Holiday)
 
 # 3. Check if today is a holiday in Korea (KST)
-if is_today_holiday():
+if is_holiday_today():
     print("Today is a holiday!")
 ```

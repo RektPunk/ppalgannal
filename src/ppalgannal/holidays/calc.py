@@ -101,6 +101,6 @@ def is_holiday(value: date | str) -> bool:
     return value in _get_holiday_dates(value.year)
 
 
-def is_today_holiday() -> bool:
+def is_holiday_today() -> bool:
     """Return whether today is a named public or substitute holiday in Korea."""
     return is_holiday(datetime.now(KST).date())

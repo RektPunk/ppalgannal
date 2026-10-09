@@ -1,6 +1,6 @@
 [project]
 name = "ppalgannal"
-version = "0.1.0"
+version = "0.1.1"
 description = "Korean holidays, aka the red days."
 readme = "README.md"
 authors = [

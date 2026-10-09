@@ -10,7 +10,7 @@ from ppalgannal.holidays.constant import (
     SubstituteRule,
 )
 from ppalgannal.holidays.substitute import add_substitute_holidays
-from ppalgannal.lunar import lunar_to_solar
+from ppalgannal.lunar.convert import lunar_to_solar
 
 
 def _add_holiday(

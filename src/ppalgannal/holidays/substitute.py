@@ -47,8 +47,9 @@ def add_substitute_holidays(
         )
         holiday_dates.add(substitute_date)
 
+    three_day_dates = {day for group in three_day_groups for day in group}
     for holiday_date, rule in rules.items():
-        if any(holiday_date in group for group in three_day_groups):
+        if holiday_date in three_day_dates:
             continue
 
         if not _is_substitute_triggered(holiday_date, rule):

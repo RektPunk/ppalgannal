@@ -6,6 +6,7 @@
 # https://github.com/usingsky/korean_lunar_calendar_py
 
 from datetime import date
+from functools import lru_cache
 
 from ppalgannal.lunar.constant import (
     LUNAR_BIG_MONTH_DAYS,
@@ -38,6 +39,7 @@ def _lunar_year_days(year: int) -> int:
     return (_lunar_data(year) >> 17) & 0x01FF
 
 
+@lru_cache(maxsize=128)
 def _lunar_days_before_year(year: int) -> int:
     return sum(_lunar_year_days(y) for y in range(LUNAR_MIN_YEAR, year + 1))
 
@@ -76,6 +78,7 @@ def _solar_year_days(year: int) -> int:
     return 366 if _is_solar_leap_year(year) else 365
 
 
+@lru_cache(maxsize=128)
 def _solar_days_before_year(year: int) -> int:
     return sum(_solar_year_days(y) for y in range(LUNAR_MIN_YEAR, year + 1))
 

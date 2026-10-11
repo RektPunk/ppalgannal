@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 import pytest
 
-from ppalgannal.holidays import (
+from ppalgannal.holidays.calc import (
     get_holidays,
     is_holiday,
     is_holiday_today,
